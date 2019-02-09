@@ -41,6 +41,13 @@ void Random_Walk::Walk(void) {
 
 
 
+// Operator overloading
+int Random_Walk::operator()(const unsigned i) const {
+  return X[i];
+} // int Random_Walk::operator()(const unsigned i) const {
+
+
+
 // Getter methods
 void Random_Walk::Get_Xn(const unsigned i, int & Xn) const {
   if(i > Length)
