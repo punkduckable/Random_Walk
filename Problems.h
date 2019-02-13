@@ -11,5 +11,7 @@ void Problem365_3(void);
 void Problem365_4(void);
 
 void Problem368(void);
+void Problem369(void);
+void Problem3610(void);
 
 #endif

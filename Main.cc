@@ -6,7 +6,7 @@ int main() {
   // Seed the random number generator
   srand(time(0));
 
-  Problem368();
+  Problem3610();
 
   return 0;
 } // int main() {

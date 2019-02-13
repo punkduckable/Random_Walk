@@ -130,3 +130,56 @@ void Problem368(void) {
     printf("The predicted probability is %6lf\n", P_Predicted);
     printf("The measured probability is  %6lf\n", P_Measured);
 } // void Problem368(void) {
+
+
+
+
+void Problem369(void) {
+  // First, create a random walk of length 10
+  class Random_Walk X(20);
+
+  // Now, walk 1,000,000 times. Each time, check if any element is 5.
+  unsigned Counter = 1000000;
+  for(int i = 0; i < 1000000; i++) {
+    X.Walk();
+
+    for(int n = 1; n <= 20; n++) {
+      if(X(n) == 0) {
+        Counter--;
+        break;
+      } // if(X(n) == 5) {
+    } // for(int n = 1; n <= 10; j++)
+  } // for(int i = 0; i < 1000000; i++) {
+
+  double P_Predicted = 0.176197052;
+  double P_Measured = ((double)Counter)/(1000000.);
+  printf("The predicted probability is %6lf\n", P_Predicted);
+  printf("The measured probability is  %6lf\n", P_Measured);
+} // void Problem369(void) {
+
+
+
+void Problem3610(void) {
+  // First, create a random walk of length 10.
+  class Random_Walk X(10);
+
+  // Now, walk 1,000,000 times. Each time, check if the max is > 3.
+  unsigned Counter = 0;
+  for(int i = 0; i < 1000000; i++) {
+    X.Walk();
+
+    /* Note. The walk can't get to 3 until the 3rd step, so we can begin searching
+    there to improve runtime */
+    for(int n = 3; n <= 10; n++) {
+      if(X(n) == 3) {
+        Counter++;
+        break;
+      } // if(X(n) == 3) {
+    } // for(int n = 3; n <= 10; n++) {
+  } // for(int i = 0; i < 1000000; i++) {
+
+  double P_Predicted = 1. - (252. + 210. + 210.)/1024.;
+  double P_Measured = ((double)Counter)/(1000000.);
+  printf("The predicted probability is %6lf\n", P_Predicted);
+  printf("The measured probability is  %6lf\n", P_Measured);
+} // void Problem3610(void) {
