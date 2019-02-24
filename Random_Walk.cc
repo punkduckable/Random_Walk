@@ -7,8 +7,10 @@
 
 
 // Constructor
-Random_Walk::Random_Walk(const unsigned Length_In) {
+Random_Walk::Random_Walk(const unsigned Length_In, const double p_In) {
   Length = Length_In;
+  p = p_In;
+
   X = new int[Length+1];
   X[0] = 0;
 } // Random_Walk::Random_Walk(const unsigned Length_In) {
@@ -27,12 +29,13 @@ void Random_Walk::Walk(void) {
   /* Each random number is between 0 and RAND_MAX (inclusive).
   We want to map half of these numbers to -1 and the others to 1. if
   x <= RAND_MAX/2 (integer division) then go to -1, otherwise go to 1. */
-  const int HALF_RAND_MAX = RAND_MAX/2;
+  const int p_RAND_MAX = (int)(p*((double)RAND_MAX));
 
   for(int n = 1; n <= Length; n++) {
     int x = rand();
 
-    if(x <= HALF_RAND_MAX)
+    // If x <= p_RAND_MAX then delta_i = -1. Otherwise, delta_i = 1. 
+    if(x <= p_RAND_MAX)
       X[n] = X[n-1] - 1;
     else
       X[n] = X[n-1] + 1;

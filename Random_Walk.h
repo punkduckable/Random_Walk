@@ -4,11 +4,12 @@
 class Random_Walk {
 private:
   unsigned Length;
+  double p;
   int * X;
 
 public:
   // Constructor
-  Random_Walk(const unsigned Length_In);
+  Random_Walk(const unsigned Length_In, const double p_In = .5);
 
   // Destructor
   ~Random_Walk(void);

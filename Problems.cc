@@ -45,21 +45,62 @@ void Correctness_Test2(void) {
 
 
 
-void Problem365_2(void) {
-  // Create a random walk of length 12.
-  class Random_Walk X(12);
+void Problem364_3(void) {
+  class Random_Walk X(8, 1./3.);
 
-  // Now, walk 10,000,000 times. Each time, check if X(6) = X(12)
+  // Walk  1,000,000 times. Each time, check if X(2) = X(4) = X(8).
   unsigned int Counter = 0;
-  for(int i = 0; i < 10000000; i++)  {
+  for(int i = 0; i < 1000000; i++) {
     X.Walk();
 
-    if(X(6) == X(12))
+    if(X(2) == X(4) && X(4) == X(8))
       Counter++;
-  } // for(int i = 0; i < 10000000; i++)  {
+  } // for(int i = 0; i < 1000000; i++) {
 
-  double P_Predicted = 5./16.;
-  double P_Measured = ((double)Counter)/(10000000.);
+  double P_Predicted = (32./243.);
+  double P_Measured = ((double)Counter)/(1000000.);
+  printf("The predicted probability is %6lf\n", P_Predicted);
+  printf("The measured probability is  %6lf\n", P_Measured);
+} // void Problem364_3(void) {
+
+
+
+void Problem365_1(void) {
+  // Create a random walk of length 20.
+  class Random_Walk X(20);
+
+  // Now, walk 1,000,000 times. Each time, check if X(20) = 0
+  unsigned int Counter = 0;
+  for(int i = 0; i < 1000000; i++)  {
+    X.Walk();
+
+    if(X(20) == 0)
+      Counter++;
+  } // for(int i = 0; i < 1000000; i++)  {
+
+  double P_Predicted = 0.176197052;
+  double P_Measured = ((double)Counter)/(1000000.);
+  printf("The predicted probability is %6lf\n", P_Predicted);
+  printf("The measured probability is  %6lf\n", P_Measured);
+} // void Problem365_2(void) {
+
+
+
+void Problem365_2(void) {
+  // Create a random walk of length 20.
+  class Random_Walk X(20);
+
+  // Now, walk 1,000,000 times. Each time, check if X(10) = X(20)
+  unsigned int Counter = 0;
+  for(int i = 0; i < 1000000; i++)  {
+    X.Walk();
+
+    if(X(10) == X(20))
+      Counter++;
+  } // for(int i = 0; i < 1000000; i++)  {
+
+  double P_Predicted = 0.24609375;
+  double P_Measured = ((double)Counter)/(1000000.);
   printf("The predicted probability is %6lf\n", P_Predicted);
   printf("The measured probability is  %6lf\n", P_Measured);
 } // void Problem365_2(void) {
